@@ -144,7 +144,7 @@ exports.Prisma.UserScalarFieldEnum = {
   image: 'image'
 };
 
-exports.Prisma.NotesScalarFieldEnum = {
+exports.Prisma.NoteScalarFieldEnum = {
   id: 'id',
   title: 'title',
   content: 'content',
@@ -169,7 +169,7 @@ exports.Prisma.ModelName = {
   Account: 'Account',
   Session: 'Session',
   User: 'User',
-  Notes: 'Notes'
+  Note: 'Note'
 };
 
 /**

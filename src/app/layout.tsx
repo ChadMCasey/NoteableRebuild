@@ -1,16 +1,16 @@
-import type { Metadata } from 'next';
-import { Geist } from 'next/font/google';
-import { SessionProvider } from 'next-auth/react';
-import { ThemeProvider } from 'next-themes';
-import './globals.css';
+import type { Metadata } from "next";
+import { Geist } from "next/font/google";
+import { SessionProvider } from "next-auth/react";
+import { ThemeProvider } from "next-themes";
+import "./globals.css";
 
 const geistSans = Geist({
-  subsets: ['latin'],
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: 'Noteable',
-  description: 'A simple notetaking application',
+  title: "Noteable",
+  description: "A simple notetaking application",
 };
 
 interface RootLayoutProps {
@@ -21,12 +21,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang='en' suppressHydrationWarning>
       <body className={`${geistSans.className} antialiased`}>
-        <ThemeProvider
-          attribute='class'
-          defaultTheme='dark'
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider attribute='class' defaultTheme='dark' enableSystem>
           <SessionProvider>{children}</SessionProvider>
         </ThemeProvider>
       </body>

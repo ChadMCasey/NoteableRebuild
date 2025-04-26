@@ -43,10 +43,10 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
-  notes         Notes[]
+  notes         Note[]
 }
 
-model Notes {
+model Note {
   id String @id @default(cuid())
   title String
   content String
