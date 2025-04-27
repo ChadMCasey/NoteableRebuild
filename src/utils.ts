@@ -11,6 +11,7 @@ export const paths = {
 
   login: "/login",
 
-  newNote: "/note/new"
+  newNote: "/note/new",
+  viewNote: (noteId: string) => `/note/${noteId}`
 }
 

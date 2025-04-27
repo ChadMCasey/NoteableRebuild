@@ -1,8 +1,7 @@
-import { auth } from "@/auth";
-import NoteCard from "@/components/NoteCard";
-import { db } from "@/db";
+import { Suspense } from "react";
+import NoteList from "@/components/NoteList";
+import DashboardSkeleton from "@/components/DashboardSkeleton";
 
-// /dashboard?category=Work
 // { category: Work }
 interface DashboardPageProps {
   searchParams: Promise<{
@@ -12,26 +11,9 @@ interface DashboardPageProps {
 }
 
 export default async function DashboardPage(props: DashboardPageProps) {
-  // parse search params
-  const params = await props.searchParams;
-  const { category, search } = params;
-
-  const session = await auth();
-  const id = session?.user?.id;
-
-  const notes = await db.note.findMany({
-    where: {
-      userId: id,
-      category, // if undefined, we fetch "All" notes
-      title: { contains: search },
-    },
-  });
-
   return (
-    <ul className='grid grid-cols-2 gap-6'>
-      {notes.map((note) => (
-        <NoteCard key={note.id} note={note} />
-      ))}
-    </ul>
+    <Suspense fallback={<DashboardSkeleton />}>
+      <NoteList searchParams={props.searchParams} />
+    </Suspense>
   );
 }

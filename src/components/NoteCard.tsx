@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import { PencilIcon } from "lucide-react";
 import Link from "next/link";
 import { Note } from "../../prisma/generated/prisma";
+import { paths } from "@/utils";
 
 interface NoteCardProps {
   note: Note;
@@ -18,7 +19,7 @@ export default function NoteCard({ note }: NoteCardProps) {
       <p className='text-sm/7 text-muted-foreground'>{note.content}</p>
       <div className='mt-auto flex justify-between items-center text-xs'>
         <p>{note.createdAt.toLocaleDateString()}</p>
-        <Link href='#'>
+        <Link href={paths.viewNote(note.id)}>
           <PencilIcon className='stroke-zinc-400 cursor-pointer' />
         </Link>
       </div>
